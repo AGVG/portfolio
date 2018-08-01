@@ -8,6 +8,6 @@ const Test = styled.div`
 
 const Index = () => {
   return <Test>Hello React!</Test>;
-};
+}
 
 ReactDOM.render(<Index />, document.getElementById("index"));

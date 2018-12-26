@@ -23,7 +23,16 @@ module.exports = {
             presets: ['react']
           }
         }
-      }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
     ]
   },
   plugins: [htmlPlugin]

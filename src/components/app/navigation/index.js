@@ -16,6 +16,15 @@ const rotationAnimation = angle => keyframes`{
 	}
 `;
 
+const flipAnimation = angle => keyframes`{
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+	}
+`;
+
 const Container = styled.div`
 	position: relative;
 `;
@@ -42,7 +51,11 @@ const Link = styled.div`
 	}
 `;
 
-const WhiteWrapper = styled.div`
+const Flipper = styled.div`
+	perspective: 13rem;
+`;
+
+const IconWrapper = styled.div`
 	align-items: center;
 	border-radius: 100%;
 	background-color: white;
@@ -50,25 +63,34 @@ const WhiteWrapper = styled.div`
 	height: 2.75rem;
 	justify-content: center;
 	width: 2.75rem;
+	:hover {
+		animation: ${flipAnimation} 500ms ease-in-out forwards;
+	}
 `;
 
 const Navigation = () => (
 	<Container>
 		<AGVGLogo />
 		<Link angle='0'>
-			<WhiteWrapper>
-				<HomeIcon />
-			</WhiteWrapper>
+			<Flipper>
+				<IconWrapper>
+					<HomeIcon />
+				</IconWrapper>
+			</Flipper>
 		</Link>
 		<Link angle='35'>
-		<WhiteWrapper>
-				<ListIcon />
-		</WhiteWrapper>
+			<Flipper>
+				<IconWrapper>
+						<ListIcon />
+				</IconWrapper>
+			</Flipper>
 		</Link>
 		<Link angle='70'>
-			<WhiteWrapper>
-				<EmailIcon />
-			</WhiteWrapper>
+			<Flipper>
+				<IconWrapper>
+					<EmailIcon />
+				</IconWrapper>
+			</Flipper>
 		</Link>
 	</Container>
 );

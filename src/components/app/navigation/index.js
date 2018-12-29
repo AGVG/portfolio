@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import LogoPNG from '../../../../assets/images/agvg-logo-web.png';
 import HomeIcon from '../../../../assets/svgs/HomeIcon';
@@ -7,6 +7,14 @@ import ListIcon from '../../../../assets/svgs/ListIcon';
 import EmailIcon from '../../../../assets/svgs/EmailIcon';
 // import FrontendSVG from '../../../../assets/svgs/frontend-svg.svg';
 
+const rotationAnimation = angle => keyframes`{
+  0% {
+    transform: rotate(120deg);
+  }
+  100% {
+    transform: rotate(${angle}deg);
+	}
+`;
 
 const Container = styled.div`
 	position: relative;
@@ -22,6 +30,7 @@ const AGVGLogo = styled.img.attrs({
 `;
 
 const Link = styled.div`
+	animation: ${props => rotationAnimation(props.angle)} 500ms ease-in-out forwards;
 	left: 15px;
 	padding-left: 80px;
 	position: absolute;
@@ -33,17 +42,33 @@ const Link = styled.div`
 	}
 `;
 
+const WhiteWrapper = styled.div`
+	align-items: center;
+	border-radius: 100%;
+	background-color: white;
+	display: flex;
+	height: 2.75rem;
+	justify-content: center;
+	width: 2.75rem;
+`;
+
 const Navigation = () => (
 	<Container>
 		<AGVGLogo />
 		<Link angle='0'>
-			<HomeIcon />
+			<WhiteWrapper>
+				<HomeIcon />
+			</WhiteWrapper>
 		</Link>
 		<Link angle='35'>
-			<ListIcon />
+		<WhiteWrapper>
+				<ListIcon />
+		</WhiteWrapper>
 		</Link>
 		<Link angle='70'>
-			<EmailIcon />
+			<WhiteWrapper>
+				<EmailIcon />
+			</WhiteWrapper>
 		</Link>
 	</Container>
 );
